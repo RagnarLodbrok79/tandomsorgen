@@ -1,15 +1,15 @@
 ---
-title: Välkommen till Tandomsorgenar
+title: Välkommen till Tandomsorgen
 description: Tandomsorgen i Vimmerby AB — Tandvård för ett leende att vara stolt över
 hero_heading: För ett leende att vara stolt över
-hero_text: Vi erbjuder oprofessionell tandvård med evidensbaserade metoder i en
+hero_text: Vi erbjuder professionell tandvård med evidensbaserade metoder i en
   trygg och modern miljö. Välkommen till Tandomsorgen i Vimmerby.
 ---
 ## Tandvård med omtanke
 
 Tandomsorgen i Vimmerby AB är en privat tandläkarmottagning som erbjuder tandvård för hela familjen. Vi arbetar 
 
-![](/images/uploads/pxl_20260208_190416673.jpg)
+![]()
 
 efter Socialstyrelsens nationella riktlinjer och använder evidensbaserade metoder för bästa möjliga resultat.
 
