@@ -5,17 +5,20 @@ hero_heading: För ett leende att vara stolt över
 hero_text: Vi erbjuder oprofessionell tandvård med evidensbaserade metoder i en
   trygg och modern miljö. Välkommen till Tandomsorgen i Vimmerby.
 ---
-
 ## Tandvård med omtanke
 
-Tandomsorgen i Vimmerby AB är en privat tandläkarmottagning som erbjuder tandvård för hela familjen. Vi arbetar efter Socialstyrelsens nationella riktlinjer och använder evidensbaserade metoder för bästa möjliga resultat.
+Tandomsorgen i Vimmerby AB är en privat tandläkarmottagning som erbjuder tandvård för hela familjen. Vi arbetar 
+
+![](/images/uploads/pxl_20260208_190416673.jpg)
+
+efter Socialstyrelsens nationella riktlinjer och använder evidensbaserade metoder för bästa möjliga resultat.
 
 ## Varför välja oss?
 
-- **Evidensbaserad vård** — Vi följer svenska nationella riktlinjer
-- **Modern utrustning** — Digitalröntgen och skonsam teknik
-- **Personligt bemötande** — Vi tar oss tid att lyssna och förklara
-- **Tandvårdsrädsla** — Vi har erfarenhet av att hjälpa patienter med oro
+* **Evidensbaserad vård** — Vi följer svenska nationella riktlinjer
+* **Modern utrustning** — Digitalröntgen och skonsam teknik
+* **Personligt bemötande** — Vi tar oss tid att lyssna och förklara
+* **Tandvårdsrädsla** — Vi har erfarenhet av att hjälpa patienter med oro
 
 ## Akuttandvård
 
