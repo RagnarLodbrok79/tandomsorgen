@@ -2,7 +2,7 @@ backend:
   name: github
   repo: RagnarLodbrok79/tandomsorgen
   branch: main
-  base_url: http://95.217.184.116:8085
+  base_url: http://95.217.184.116:8080
   auth_endpoint: auth
 
 media_folder: "public/images/uploads"
