@@ -7,22 +7,6 @@
     <title>Tandomsorgen — Admin</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms-app@^3.0.0/dist/decap-cms-app.js"></script>
-    <script>
-      const defined = window.initCMS || window.CMS_GLOBAL;
-      if (window.CMS) {
-        window.CMS.init({
-          config: {
-            backend: {
-              name: "github",
-              repo: "RagnarLodbrok79/tandomsorgen",
-              branch: "main",
-              base_url: "http://95.217.184.116:8085",
-              auth_endpoint: "auth"
-            }
-          }
-        });
-      }
-    </script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
