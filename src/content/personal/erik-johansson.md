@@ -9,4 +9,4 @@ Erik är känd för sitt lugna och tålmodiga sätt, vilket uppskattas särskilt
 
 Utanför jobbet är Erik en aktiv seglare och hängiven kock.
 
-![](/images/uploads/pxl_20260208_190416673.jpg)
+![]()
