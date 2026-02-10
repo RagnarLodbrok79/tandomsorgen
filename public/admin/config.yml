@@ -1,8 +1,8 @@
-local_backend: true
-
 backend:
-  name: git-gateway
+  name: github
+  repo: RagnarLodbrok79/tandomsorgen
   branch: main
+  base_url: http://95.217.184.116:8085
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
