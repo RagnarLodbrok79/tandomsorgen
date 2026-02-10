@@ -2,7 +2,7 @@
 title: Välkommen till Tandomsorgenar
 description: Tandomsorgen i Vimmerby AB — Tandvård för ett leende att vara stolt över
 hero_heading: För ett leende att vara stolt över
-hero_text: Vi erbjuder professionell tandvård med evidensbaserade metoder i en
+hero_text: Vi erbjuder oprofessionell tandvård med evidensbaserade metoder i en
   trygg och modern miljö. Välkommen till Tandomsorgen i Vimmerby.
 ---
 
