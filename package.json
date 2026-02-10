@@ -1,0 +1,22 @@
+{
+  "name": "tandomsorgen-vimmerby",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "cms": "npx decap-server",
+    "build": "astro build",
+    "deploy": "astro build && tar czf /tmp/tandomsorgen-dist.tar.gz -C dist . && scp /tmp/tandomsorgen-dist.tar.gz dietpi@nc.smeo.se:/tmp/ && ssh dietpi@nc.smeo.se 'tar xzf /tmp/tandomsorgen-dist.tar.gz -C /var/www/tandomsorgen/ && rm /tmp/tandomsorgen-dist.tar.gz' && echo 'Deployed!'",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "decap-server": "^3.5.0"
+  }
+}

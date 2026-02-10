@@ -1,0 +1,98 @@
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: "sv"
+
+collections:
+  # Statiska sidor
+  - name: "pages"
+    label: "Sidor"
+    files:
+      - label: "Startsida"
+        name: "hem"
+        file: "src/content/pages/hem.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Beskrivning (SEO)", name: "description", widget: "string", required: false }
+          - { label: "Hero-rubrik", name: "hero_heading", widget: "string", required: false }
+          - { label: "Hero-text", name: "hero_text", widget: "text", required: false }
+          - { label: "Innehåll", name: "body", widget: "markdown" }
+
+      - label: "Om oss"
+        name: "om-oss"
+        file: "src/content/pages/om-oss.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Beskrivning (SEO)", name: "description", widget: "string", required: false }
+          - { label: "Innehåll", name: "body", widget: "markdown" }
+
+      - label: "Priser"
+        name: "priser"
+        file: "src/content/pages/priser.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Beskrivning (SEO)", name: "description", widget: "string", required: false }
+          - { label: "Innehåll", name: "body", widget: "markdown" }
+
+      - label: "Patientinformation"
+        name: "patientinfo"
+        file: "src/content/pages/patientinfo.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Beskrivning (SEO)", name: "description", widget: "string", required: false }
+          - { label: "Innehåll", name: "body", widget: "markdown" }
+
+      - label: "Kontakt"
+        name: "kontakt"
+        file: "src/content/pages/kontakt.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Beskrivning (SEO)", name: "description", widget: "string", required: false }
+          - { label: "Innehåll", name: "body", widget: "markdown" }
+
+  # Behandlingar
+  - name: "behandlingar"
+    label: "Behandlingar"
+    folder: "src/content/behandlingar"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Kort beskrivning", name: "description", widget: "text" }
+      - { label: "Bild", name: "image", widget: "image", required: false }
+      - { label: "Sorteringsordning", name: "order", widget: "number", default: 0 }
+      - { label: "Innehåll", name: "body", widget: "markdown" }
+
+  # Personal
+  - name: "personal"
+    label: "Personal"
+    folder: "src/content/personal"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Namn", name: "name", widget: "string" }
+      - { label: "Roll/Titel", name: "role", widget: "string" }
+      - { label: "Foto", name: "image", widget: "image", required: false }
+      - { label: "Sorteringsordning", name: "order", widget: "number", default: 0 }
+      - { label: "Beskrivning", name: "body", widget: "markdown" }
+
+  # Nyheter
+  - name: "nyheter"
+    label: "Nyheter"
+    folder: "src/content/nyheter"
+    create: true
+    slug: "{{slug}}"
+    sort: "date:desc"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Kort beskrivning", name: "description", widget: "text", required: false }
+      - { label: "Bild", name: "image", widget: "image", required: false }
+      - { label: "Författare", name: "author", widget: "string", required: false }
+      - { label: "Innehåll", name: "body", widget: "markdown" }

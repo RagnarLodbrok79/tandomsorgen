@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const nyheter = (await getCollection('nyheter')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Nyheter" description="Senaste nytt från Tandomsorgen i Vimmerby.">
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-brand-700 mb-4" style="font-family: 'Josefin Sans', sans-serif;">Nyheter</h1>
+    <p class="text-lg text-brand-500 mb-12">Senaste nytt från Tandomsorgen.</p>
+
+    <div class="space-y-6">
+      {nyheter.map(n => (
+        <a href={`/nyheter/${n.id}`} class="block bg-white/70 backdrop-blur-sm border border-brand-100 rounded-2xl p-6 hover:shadow-lg hover:bg-white transition-all duration-300">
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <time class="text-sm text-brand-400" datetime={n.data.date.toISOString().split('T')[0]}>
+              {n.data.date.toLocaleDateString('sv-SE')}
+            </time>
+            {n.data.author && <span class="text-sm text-brand-300">• {n.data.author}</span>}
+          </div>
+          <h2 class="text-xl font-bold text-brand-700 mb-2" style="font-family: 'Josefin Sans', sans-serif;">{n.data.title}</h2>
+          {n.data.description && <p class="text-brand-500">{n.data.description}</p>}
+          <span class="text-brand-400 text-sm font-medium mt-3 inline-block">Läs mer →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,194 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Tandomsorgen i Vimmerby AB — Tandvård för ett leende att vara stolt över' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Hem' },
+  { href: '/om-oss', label: 'Om oss' },
+  { href: '/behandlingar', label: 'Behandlingar' },
+  { href: '/priser', label: 'Priser' },
+  { href: '/personal', label: 'Personal' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/nyheter', label: 'Nyheter' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>{title} | Tandomsorgen i Vimmerby</title>
+    <style>
+      body { font-family: 'Archivo', sans-serif; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Josefin Sans', sans-serif; }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col bg-gradient-to-br from-brand-200 via-brand-100 to-brand-50 text-brand-600">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/images/logo.png" alt="Tandomsorgen" class="h-12 w-auto" />
+          <div class="hidden sm:block">
+            <span class="block text-xl font-bold text-brand-600 leading-tight" style="font-family: 'Josefin Sans', sans-serif;">Tandomsorgen</span>
+            <span class="block text-xs text-brand-400 tracking-wide">VIMMERBY</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex gap-1">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={[
+                'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'bg-brand-600 text-white shadow-sm'
+                  : 'text-brand-600 hover:bg-brand-600/10'
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 rounded-lg text-brand-600 hover:bg-brand-100"
+          aria-label="Öppna meny"
+          aria-expanded="false"
+        >
+          <svg id="hamburger-icon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile nav -->
+      <nav id="mobile-menu" class="hidden lg:hidden border-t border-brand-100 bg-white/95 backdrop-blur-md">
+        <div class="px-4 py-3 space-y-1">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={[
+                'block px-4 py-3 rounded-lg text-sm font-medium transition-colors',
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'bg-brand-600 text-white'
+                  : 'text-brand-600 hover:bg-brand-100'
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a href="tel:+46733033442" class="block px-4 py-3 mt-2 rounded-lg text-sm font-semibold bg-accent-400 text-white text-center">
+            Ring oss: 0733-03 34 42
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-700 text-brand-200">
+      <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <!-- Brand -->
+          <div>
+            <img src="/images/logo.png" alt="Tandomsorgen" class="h-16 w-auto mb-4 brightness-200" />
+            <p class="text-sm text-brand-300">Tandvård för ett leende att vara stolt över.</p>
+          </div>
+
+          <!-- Contact info -->
+          <div>
+            <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Kontakt</h3>
+            <ul class="space-y-2 text-sm">
+              <li>Mässhantverksgatan 5</li>
+              <li>598 40 Vimmerby</li>
+              <li class="pt-2">
+                <a href="tel:+46733033442" class="hover:text-white transition-colors">
+                  0733-03 34 42
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@tandomsorgen.se" class="hover:text-white transition-colors">
+                  info@tandomsorgen.se
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Opening hours -->
+          <div>
+            <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Öppettider</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex justify-between gap-4"><span>Måndag</span><span>07:15–16:45</span></li>
+              <li class="flex justify-between gap-4"><span>Tisdag–torsdag</span><span>07:15–15:45</span></li>
+              <li class="flex justify-between gap-4"><span>Fredag</span><span>07:15–12:45</span></li>
+              <li class="flex justify-between gap-4"><span>Lör–sön</span><span class="text-brand-400">Stängt</span></li>
+            </ul>
+          </div>
+
+          <!-- Quick links -->
+          <div>
+            <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Snabblänkar</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/behandlingar" class="hover:text-white transition-colors">Behandlingar</a></li>
+              <li><a href="/priser" class="hover:text-white transition-colors">Priser</a></li>
+              <li><a href="/faq" class="hover:text-white transition-colors">Vanliga frågor</a></li>
+              <li><a href="/kontakt" class="hover:text-white transition-colors">Boka tid</a></li>
+            </ul>
+            <div class="flex gap-3 mt-4">
+              <a href="#" class="text-brand-300 hover:text-white transition-colors" aria-label="Instagram">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="#" class="text-brand-300 hover:text-white transition-colors" aria-label="Facebook">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.642c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385c5.738-.9 10.126-5.864 10.126-11.854z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-brand-600 text-center text-sm text-brand-400">
+          <p>&copy; {new Date().getFullYear()} Tandomsorgen i Vimmerby AB</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const hamburger = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      btn?.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu?.classList.toggle('hidden');
+        hamburger?.classList.toggle('hidden');
+        closeIcon?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

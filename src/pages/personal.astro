@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const personal = (await getCollection('personal')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Personal" description="Möt teamet på Tandomsorgen i Vimmerby.">
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-brand-700 mb-4" style="font-family: 'Josefin Sans', sans-serif;">Vår personal</h1>
+    <p class="text-lg text-brand-500 mb-12">Möt det engagerade teamet som tar hand om din munhälsa.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {await Promise.all(personal.map(async (person) => {
+        const { Content } = await render(person);
+        return (
+          <div class="bg-white/70 backdrop-blur-sm border border-brand-100 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-20 h-20 bg-gradient-to-br from-brand-300 to-brand-500 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                {person.data.name.split(' ').map(n => n[0]).join('')}
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-brand-700" style="font-family: 'Josefin Sans', sans-serif;">{person.data.name}</h2>
+                <p class="text-brand-400 font-medium">{person.data.role}</p>
+              </div>
+            </div>
+            <div class="prose prose-sm max-w-none text-brand-500">
+              <Content />
+            </div>
+          </div>
+        );
+      }))}
+    </div>
+  </section>
+</BaseLayout>

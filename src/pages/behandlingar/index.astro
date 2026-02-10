@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const behandlingar = (await getCollection('behandlingar')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Behandlingar" description="Våra tandvårdsbehandlingar — undersökning, tandhygienist, lagningar, kronor, estetisk tandvård och mer.">
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-brand-700 mb-4" style="font-family: 'Josefin Sans', sans-serif;">Våra behandlingar</h1>
+    <p class="text-lg text-brand-500 mb-12">Vi erbjuder ett brett utbud av tandvårdstjänster för hela familjen.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {behandlingar.map((b, i) => (
+        <a href={`/behandlingar/${b.id}`} class="group bg-white/70 backdrop-blur-sm border border-brand-100 rounded-2xl p-6 hover:shadow-lg hover:bg-white transition-all duration-300">
+          {i === 0 && <img src="/images/behandling-allman.jpg" alt="" class="w-full h-40 object-cover rounded-xl mb-4" />}
+          {i === 5 && <img src="/images/behandling-estetisk.jpg" alt="" class="w-full h-40 object-cover rounded-xl mb-4" />}
+          <h2 class="text-xl font-bold text-brand-700 mb-3 group-hover:text-brand-500 transition-colors" style="font-family: 'Josefin Sans', sans-serif;">{b.data.title}</h2>
+          <p class="text-brand-500 text-sm mb-4 leading-relaxed">{b.data.description}</p>
+          <span class="text-brand-400 text-sm font-medium group-hover:translate-x-1 transition-transform inline-block">Läs mer →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
